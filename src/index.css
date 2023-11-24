@@ -29,6 +29,10 @@ body {
   min-height: 110rem;
 }
 
+.invisible {
+  display: none;
+}
+
 header {
   text-align: center;
 }
@@ -166,7 +170,7 @@ ol {
   gap: 2rem;
   margin: 3rem 0;
   padding: 0;
-  flex-direction: column;
+  flex-direction: row;
 }
 
 #game-board ol {
@@ -230,6 +234,9 @@ ol {
   cursor: pointer;
   transition: all 0.2s, color 0.2s;
   box-shadow: 0 0 8px rgba(255, 187, 0, 0.4);
+}
+.board-items {
+  margin-bottom: 2rem;
 }
 
 #game-over button:hover {
