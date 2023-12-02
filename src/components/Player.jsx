@@ -1,13 +1,14 @@
 import {useState} from "react";
 
-export default function Player({name, symbol, isActive}) {
+export default function Player({name, symbol, isActive, onChangeName}) {
     const [isEditing, setIsEditing] = useState(false);
-    const [playerName, setPlaerNane] = useState(name)
-    function toggle () {
-            setIsEditing((edite) => !edite);
+    const [playerName, setPlayerName] = useState(name)
+    function handleEditingClick () {
+            setIsEditing((editing) => !editing);
+            onChangeName(symbol, playerName);
     }
 
-    const handleChangeName = (event) => setPlaerNane(event.target.value);
+    const handleChangeName = (event) => setPlayerName(event.target.value);
     return (
         <li className={isActive? 'active': undefined}>
             <span className="player">
@@ -15,7 +16,7 @@ export default function Player({name, symbol, isActive}) {
                 {isEditing && <input type="text" placeholder={playerName} onChange={handleChangeName}/>}
                 <span className="player-symbol">{symbol}</span>
             </span>
-            <button onClick={toggle}>{isEditing? 'Save': 'Edit'}</button>
+            <button onClick={handleEditingClick}>{isEditing? 'Save': 'Edit'}</button>
         </li>
     );
 }
